@@ -1,0 +1,17 @@
+[build]
+builder = "nixpacks"
+
+[deploy]
+startCommand = "npx serve -s . -l $PORT"
+healthcheckPath = "/"
+healthcheckTimeout = 100
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10
+
+[nixpacks]
+buildCommand = "echo 'Static site - no build needed'"
+startCommand = "npx serve -s . -l $PORT"
+
+[railway]
+buildCommand = "echo 'Static site - no build needed'"
+startCommand = "npx serve -s . -l $PORT"
