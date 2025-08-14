@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Innovation Challenge - Shape the Future</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-container">
+            <div class="logo">AI Challenge 2024</div>
+            <div class="auth-controls" id="authControls">
+                <button id="loginBtn" class="auth-btn">Login</button>
+                <button id="registerBtn" class="auth-btn primary">Register</button>
+            </div>
+            <div class="user-info hidden" id="userInfo">
+                <span id="userGreeting"></span>
+                <button id="logoutBtn" class="logout-btn">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">🚀 AI Innovation Challenge</h1>
+                <p class="hero-subtitle">Shape the Future of AI - Win Big!</p>
+                <div class="prize-banner">
+                    <span class="prize-text">🏆 Grand Prize: $100 Amazon Gift Card</span>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number" id="participantCount">150+</div>
+                        <div class="stat-label">Participants</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="projectCount">45</div>
+                        <div class="stat-label">Projects</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">30</div>
+                        <div class="stat-label">Days Left</div>
+                    </div>
+                </div>
+                <button id="getStartedBtn" class="cta-button">Get Started Now</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Outstanding Projects Carousel -->
+    <section class="showcase-section">
+        <div class="container">
+            <h2 class="section-title">🌟 Outstanding Projects</h2>
+            <p class="section-subtitle">Discover amazing AI innovations from our community</p>
+            
+            <div class="carousel-container">
+                <div class="carousel" id="projectCarousel">
+                    <div class="carousel-slide">
+                        <div class="showcase-card featured">
+                            <div class="showcase-badge">🏆 Winner</div>
+                            <h3>NeuroVision Pro</h3>
+                            <p>Revolutionary medical imaging AI that detects brain tumors with 99.2% accuracy, helping save lives through early detection.</p>
+                            <div class="showcase-stats">
+                                <span class="votes">245 votes</span>
+                                <span class="category">Healthcare</span>
+                            </div>
+                            <div class="tech-stack">
+                                <span class="tech-tag">TensorFlow</span>
+                                <span class="tech-tag">PyTorch</span>
+                                <span class="tech-tag">Computer Vision</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <div class="showcase-card">
+                            <div class="showcase-badge">🥈 Runner-up</div>
+                            <h3>EcoPredict AI</h3>
+                            <p>Advanced climate modeling system that predicts environmental changes with unprecedented accuracy, helping cities plan for the future.</p>
+                            <div class="showcase-stats">
+                                <span class="votes">198 votes</span>
+                                <span class="category">Environment</span>
+                            </div>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Machine Learning</span>
+                                <span class="tech-tag">Satellite Data</span>
+                                <span class="tech-tag">IoT</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <div class="showcase-card">
+                            <div class="showcase-badge">🥉 Top 3</div>
+                            <h3>CodeGenie Assistant</h3>
+                            <p>Intelligent code generation and debugging tool that understands context and writes production-ready code in multiple languages.</p>
+                            <div class="showcase-stats">
+                                <span class="votes">167 votes</span>
+                                <span class="category">Productivity</span>
+                            </div>
+                            <div class="tech-stack">
+                                <span class="tech-tag">NLP</span>
+                                <span class="tech-tag">Code Analysis</span>
+                                <span class="tech-tag">GPT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-controls">
+                    <button class="carousel-btn prev" id="prevBtn">‹</button>
+                    <div class="carousel-dots" id="carouselDots"></div>
+                    <button class="carousel-btn next" id="nextBtn">›</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Participate Section -->
+    <section class="why-section">
+        <div class="container">
+            <h2 class="section-title">Why Participate?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">💡</div>
+                    <h3>Innovation Recognition</h3>
+                    <p>Showcase your AI breakthrough to a community of innovators and potential collaborators worldwide.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h3>Real Impact</h3>
+                    <p>Your solution could address real-world challenges and make a meaningful difference in people's lives.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🏆</div>
+                    <h3>Amazing Prizes</h3>
+                    <p>Win a $100 Amazon Gift Card plus recognition as an AI innovation leader in our community.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🤝</div>
+                    <h3>Network & Learn</h3>
+                    <p>Connect with like-minded developers, learn from others' projects, and build lasting professional relationships.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section">
+        <div class="container">
+            <h2 class="section-title">Competition Categories</h2>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-icon">🏥</div>
+                    <h3>Healthcare AI</h3>
+                    <p>Medical diagnosis, drug discovery, patient care optimization</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🎓</div>
+                    <h3>Education AI</h3>
+                    <p>Personalized learning, assessment tools, educational platforms</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🌍</div>
+                    <h3>Environmental AI</h3>
+                    <p>Climate monitoring, sustainability solutions, conservation tools</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">⚡</div>
+                    <h3>Productivity AI</h3>
+                    <p>Automation tools, workflow optimization, business intelligence</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🎨</div>
+                    <h3>Creative AI</h3>
+                    <p>Art generation, music composition, content creation</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🔧</div>
+                    <h3>Open Innovation</h3>
+                    <p>Any groundbreaking AI solution that doesn't fit other categories</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Auth Modal -->
+    <div class="modal-overlay hidden" id="authModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            
+            <div class="auth-section" id="authSection">
+                <div class="auth-toggle">
+                    <button id="modalLoginBtn" class="auth-tab active">Login</button>
+                    <button id="modalRegisterBtn" class="auth-tab">Register</button>
+                </div>
+
+                <form id="loginForm" class="auth-form">
+                    <h2>Welcome Back!</h2>
+                    <div class="form-group">
+                        <input type="email" id="loginEmail" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="loginPassword" placeholder="Password" required>
+                    </div>
+                    <button type="submit">Login</button>
+                </form>
+
+                <form id="registerForm" class="auth-form hidden">
+                    <h2>Join the Challenge!</h2>
+                    <div class="form-group">
+                        <input type="text" id="registerName" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="registerEmail" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="registerPassword" placeholder="Password" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                    </div>
+                    <button type="submit">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+        <div class="main-content hidden" id="mainContent">
+            <nav>
+                <button id="dashboardTab" class="nav-tab active">Dashboard</button>
+                <button id="submitTab" class="nav-tab">Submit Entry</button>
+                <button id="instructionsTab" class="nav-tab">Instructions</button>
+                <button id="logoutBtn" class="logout-btn">Logout</button>
+            </nav>
+
+            <div class="content-section" id="dashboard">
+                <h2>Competition Entries</h2>
+                <div class="motivation-text">
+                    <p>🌟 Every great innovation starts with a single idea. Your AI solution could revolutionize how we work, learn, and live!</p>
+                </div>
+                <div id="entriesList" class="entries-list">
+                    <!-- Entries will be loaded here -->
+                </div>
+            </div>
+
+            <div class="content-section hidden" id="submitSection">
+                <h2>Submit Your AI Innovation</h2>
+                <form id="submitForm">
+                    <div class="form-group">
+                        <label for="projectTitle">Project Title</label>
+                        <input type="text" id="projectTitle" placeholder="Give your AI project a catchy name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="projectDescription">Description</label>
+                        <textarea id="projectDescription" placeholder="Describe your AI innovation and its impact" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="projectLink">Project Link</label>
+                        <input type="url" id="projectLink" placeholder="https://github.com/your-project or demo link" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select id="category" required>
+                            <option value="">Select a category</option>
+                            <option value="healthcare">Healthcare AI</option>
+                            <option value="education">Education AI</option>
+                            <option value="environment">Environmental AI</option>
+                            <option value="productivity">Productivity AI</option>
+                            <option value="creative">Creative AI</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <button type="submit">Submit Entry</button>
+                </form>
+            </div>
+
+            <div class="content-section hidden" id="instructionsSection">
+                <h2>Competition Instructions</h2>
+                <div class="instructions">
+                    <h3>🎯 Objective</h3>
+                    <p>Create an innovative AI solution that addresses real-world problems and demonstrates creativity, technical excellence, and potential impact.</p>
+
+                    <h3>📋 Submission Requirements</h3>
+                    <ul>
+                        <li>Original AI project or concept</li>
+                        <li>Working demo, prototype, or detailed proposal</li>
+                        <li>Clear documentation explaining the problem and solution</li>
+                        <li>Public repository link (GitHub, GitLab, etc.) or live demo</li>
+                    </ul>
+
+                    <h3>🏆 Judging Criteria</h3>
+                    <ul>
+                        <li><strong>Innovation (30%):</strong> Originality and creativity of the AI solution</li>
+                        <li><strong>Technical Implementation (25%):</strong> Code quality and technical sophistication</li>
+                        <li><strong>Impact Potential (25%):</strong> Real-world applicability and benefit</li>
+                        <li><strong>Presentation (20%):</strong> Clear documentation and demonstration</li>
+                    </ul>
+
+                    <h3>📅 Timeline</h3>
+                    <ul>
+                        <li>Registration: Open now</li>
+                        <li>Submission Deadline: 30 days from registration</li>
+                        <li>Voting Period: 7 days after submission deadline</li>
+                        <li>Winner Announcement: 3 days after voting ends</li>
+                    </ul>
+
+                    <h3>🎁 Prize</h3>
+                    <p class="prize-highlight">The winning entry will receive a <strong>$100 Amazon Gift Card</strong> and recognition as an AI innovator!</p>
+
+                    <h3>📖 Rules</h3>
+                    <ul>
+                        <li>One submission per participant</li>
+                        <li>All submissions must be original work</li>
+                        <li>Open source projects are encouraged but not required</li>
+                        <li>Participants retain all rights to their submissions</li>
+                        <li>Winner will be selected by community voting and judge review</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
