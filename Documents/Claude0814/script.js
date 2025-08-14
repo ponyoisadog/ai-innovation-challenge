@@ -11,6 +11,8 @@ class AICompetitionApp {
         this.setupEventListeners();
         this.loadSampleEntries();
         this.updateStats();
+        this.populateInstructions();
+        this.updateLanguageButtons();
     }
 
     loadData() {
@@ -409,9 +411,57 @@ class AICompetitionApp {
         const uniqueAuthors = new Set(this.entries.map(entry => entry.authorId));
         return Math.max(uniqueAuthors.size + 145, 150); // 模拟现有参与者
     }
+
+    // 填充说明内容
+    populateInstructions() {
+        this.updateInstructionsContent();
+    }
+
+    updateInstructionsContent() {
+        const requirementsList = document.getElementById('requirementsList');
+        const judgingList = document.getElementById('judgingList');
+        const timelineList = document.getElementById('timelineList');
+
+        if (requirementsList) {
+            requirementsList.innerHTML = locales[currentLang].requirementsList.map(item => `<li>${item}</li>`).join('');
+        }
+
+        if (judgingList) {
+            judgingList.innerHTML = locales[currentLang].judgingCriteria.map(item => `<li>${item}</li>`).join('');
+        }
+
+        if (timelineList) {
+            timelineList.innerHTML = locales[currentLang].timelineList.map(item => `<li>${item}</li>`).join('');
+        }
+    }
+
+    // 更新语言按钮状态
+    updateLanguageButtons() {
+        const langEn = document.getElementById('langEn');
+        const langKo = document.getElementById('langKo');
+        
+        if (langEn && langKo) {
+            langEn.classList.toggle('active', currentLang === 'en');
+            langKo.classList.toggle('active', currentLang === 'ko');
+        }
+    }
 }
 
 // 当DOM加载完成后初始化应用
 document.addEventListener('DOMContentLoaded', () => {
-    new AICompetitionApp();
+    window.aiApp = new AICompetitionApp();
 });
+
+// 全局语言切换函数
+function switchLanguage(lang) {
+    currentLang = lang;
+    updatePageLanguage();
+    localStorage.setItem('preferredLanguage', lang);
+    
+    // 更新应用实例
+    if (window.aiApp) {
+        window.aiApp.updateLanguageButtons();
+        window.aiApp.updateInstructionsContent();
+        window.aiApp.renderEntries();
+    }
+}

@@ -11,13 +11,20 @@
     <nav class="top-nav">
         <div class="nav-container">
             <div class="logo">AI Challenge</div>
-            <div class="auth-controls" id="authControls">
-                <button id="loginBtn" class="auth-btn">Login</button>
-                <button id="registerBtn" class="auth-btn primary">Join Now</button>
-            </div>
-            <div class="user-info hidden" id="userInfo">
-                <span id="userGreeting"></span>
-                <button id="logoutBtn" class="logout-btn">Logout</button>
+            <div class="nav-right">
+                <!-- 语言切换器 -->
+                <div class="language-switcher">
+                    <button class="lang-btn" onclick="switchLanguage('en')" id="langEn">EN</button>
+                    <button class="lang-btn" onclick="switchLanguage('ko')" id="langKo">한국어</button>
+                </div>
+                <div class="auth-controls" id="authControls">
+                    <button id="loginBtn" class="auth-btn" data-i18n="login">Login</button>
+                    <button id="registerBtn" class="auth-btn primary" data-i18n="joinNow">Join Now</button>
+                </div>
+                <div class="user-info hidden" id="userInfo">
+                    <span id="userGreeting" data-i18n="welcome">Welcome</span>
+                    <button id="logoutBtn" class="logout-btn" data-i18n="logout">Logout</button>
+                </div>
             </div>
         </div>
     </nav>
@@ -26,19 +33,19 @@
     <div class="hero-section">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">AI Innovation Challenge</h1>
-                <p class="hero-subtitle">Create the future with AI</p>
+                <h1 class="hero-title" data-i18n="heroTitle">AI Innovation Challenge</h1>
+                <p class="hero-subtitle" data-i18n="heroSubtitle">Create the future with AI</p>
                 <div class="hero-stats">
                     <div class="stat-item">
                         <div class="stat-number" id="participantCount">150+</div>
-                        <div class="stat-label">Participants</div>
+                        <div class="stat-label" data-i18n="participants">Participants</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-number" id="projectCount">45</div>
-                        <div class="stat-label">Projects</div>
+                        <div class="stat-label" data-i18n="projects">Projects</div>
                     </div>
                 </div>
-                <button id="getStartedBtn" class="cta-button">Get Started</button>
+                <button id="getStartedBtn" class="cta-button" data-i18n="getStarted">Get Started</button>
             </div>
         </div>
     </div>
@@ -46,10 +53,10 @@
     <!-- 简化项目展示 -->
     <section class="showcase-section">
         <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
+            <h2 class="section-title" data-i18n="featuredProjects">Featured Projects</h2>
             <div class="showcase-grid">
                 <div class="showcase-card featured">
-                    <div class="showcase-badge">🏆 Winner</div>
+                    <div class="showcase-badge" data-i18n="winner">Winner</div>
                     <h3>NeuroVision Pro</h3>
                     <p>Medical imaging AI with 99.2% accuracy for early tumor detection.</p>
                     <div class="tech-stack">
@@ -59,7 +66,7 @@
                 </div>
                 
                 <div class="showcase-card">
-                    <div class="showcase-badge">🥈 Runner-up</div>
+                    <div class="showcase-badge" data-i18n="runnerUp">Runner-up</div>
                     <h3>EcoPredict AI</h3>
                     <p>Climate modeling system for environmental prediction and city planning.</p>
                     <div class="tech-stack">
@@ -69,7 +76,7 @@
                 </div>
                 
                 <div class="showcase-card">
-                    <div class="showcase-badge">🥉 Top 3</div>
+                    <div class="showcase-badge" data-i18n="top3">Top 3</div>
                     <h3>CodeGenie</h3>
                     <p>Intelligent code generation tool for multiple programming languages.</p>
                     <div class="tech-stack">
@@ -84,22 +91,22 @@
     <!-- 简化参与理由 -->
     <section class="why-section">
         <div class="container">
-            <h2 class="section-title">Why Join?</h2>
+            <h2 class="section-title" data-i18n="whyJoin">Why Join?</h2>
             <div class="benefits-grid">
                 <div class="benefit-card">
                     <div class="benefit-icon">💡</div>
-                    <h3>Innovation</h3>
-                    <p>Showcase your AI breakthrough to the world</p>
+                    <h3 data-i18n="innovation">Innovation</h3>
+                    <p data-i18n="innovationDesc">Showcase your AI breakthrough to the world</p>
                 </div>
                 <div class="benefit-card">
                     <div class="benefit-icon">🏆</div>
-                    <h3>Win Prizes</h3>
-                    <p>$100 Amazon Gift Card for the winner</p>
+                    <h3 data-i18n="winPrizes">Win Prizes</h3>
+                    <p data-i18n="winPrizesDesc">$100 Amazon Gift Card for the winner</p>
                 </div>
                 <div class="benefit-card">
                     <div class="benefit-icon">🤝</div>
-                    <h3>Network</h3>
-                    <p>Connect with AI innovators globally</p>
+                    <h3 data-i18n="network">Network</h3>
+                    <p data-i18n="networkDesc">Connect with AI innovators globally</p>
                 </div>
             </div>
         </div>
@@ -108,31 +115,31 @@
     <!-- 简化分类 -->
     <section class="categories-section">
         <div class="container">
-            <h2 class="section-title">Categories</h2>
+            <h2 class="section-title" data-i18n="categories">Categories</h2>
             <div class="categories-grid">
                 <div class="category-card">
                     <div class="category-icon">🏥</div>
-                    <h3>Healthcare</h3>
+                    <h3 data-i18n="healthcare">Healthcare</h3>
                 </div>
                 <div class="category-card">
                     <div class="category-icon">🎓</div>
-                    <h3>Education</h3>
+                    <h3 data-i18n="education">Education</h3>
                 </div>
                 <div class="category-card">
                     <div class="category-icon">🌍</div>
-                    <h3>Environment</h3>
+                    <h3 data-i18n="environment">Environment</h3>
                 </div>
                 <div class="category-card">
                     <div class="category-icon">⚡</div>
-                    <h3>Productivity</h3>
+                    <h3 data-i18n="productivity">Productivity</h3>
                 </div>
                 <div class="category-card">
                     <div class="category-icon">🎨</div>
-                    <h3>Creative</h3>
+                    <h3 data-i18n="creative">Creative</h3>
                 </div>
                 <div class="category-card">
                     <div class="category-icon">🔧</div>
-                    <h3>Other</h3>
+                    <h3 data-i18n="other">Other</h3>
                 </div>
             </div>
         </div>
@@ -145,36 +152,36 @@
             
             <div class="auth-section" id="authSection">
                 <div class="auth-toggle">
-                    <button id="modalLoginBtn" class="auth-tab active">Login</button>
-                    <button id="modalRegisterBtn" class="auth-tab">Register</button>
+                    <button id="modalLoginBtn" class="auth-tab active" data-i18n="login">Login</button>
+                    <button id="modalRegisterBtn" class="auth-tab" data-i18n="joinChallenge">Register</button>
                 </div>
 
                 <form id="loginForm" class="auth-form">
-                    <h2>Welcome Back</h2>
+                    <h2 data-i18n="welcomeBack">Welcome Back</h2>
                     <div class="form-group">
-                        <input type="email" id="loginEmail" placeholder="Email" required>
+                        <input type="email" id="loginEmail" data-i18n-placeholder="email" placeholder="Email" required>
                     </div>
                     <div class="form-group">
-                        <input type="password" id="loginPassword" placeholder="Password" required>
+                        <input type="password" id="loginPassword" data-i18n-placeholder="password" placeholder="Password" required>
                     </div>
-                    <button type="submit">Login</button>
+                    <button type="submit" data-i18n="submit">Login</button>
                 </form>
 
                 <form id="registerForm" class="auth-form hidden">
-                    <h2>Join the Challenge</h2>
+                    <h2 data-i18n="joinChallenge">Join the Challenge</h2>
                     <div class="form-group">
-                        <input type="text" id="registerName" placeholder="Full Name" required>
+                        <input type="text" id="registerName" data-i18n-placeholder="fullName" placeholder="Full Name" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" id="registerEmail" placeholder="Email" required>
+                        <input type="email" id="registerEmail" data-i18n-placeholder="email" placeholder="Email" required>
                     </div>
                     <div class="form-group">
-                        <input type="password" id="registerPassword" placeholder="Password" required>
+                        <input type="password" id="registerPassword" data-i18n-placeholder="password" placeholder="Password" required>
                     </div>
                     <div class="form-group">
-                        <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                        <input type="password" id="confirmPassword" data-i18n-placeholder="confirmPassword" placeholder="Confirm Password" required>
                     </div>
-                    <button type="submit">Register</button>
+                    <button type="submit" data-i18n="submit">Register</button>
                 </form>
             </div>
         </div>
@@ -183,32 +190,32 @@
     <!-- 简化主内容区域 -->
     <div class="main-content hidden" id="mainContent">
         <nav class="main-nav">
-            <button id="dashboardTab" class="nav-tab active">Dashboard</button>
-            <button id="submitTab" class="nav-tab">Submit</button>
-            <button id="instructionsTab" class="nav-tab">Rules</button>
+            <button id="dashboardTab" class="nav-tab active" data-i18n="dashboard">Dashboard</button>
+            <button id="submitTab" class="nav-tab" data-i18n="submit">Submit</button>
+            <button id="instructionsTab" class="nav-tab" data-i18n="rules">Rules</button>
         </nav>
 
         <div class="content-section" id="dashboard">
-            <h2>Your Dashboard</h2>
+            <h2 data-i18n="yourDashboard">Your Dashboard</h2>
             <div id="entriesList" class="entries-list">
                 <!-- Entries will be loaded here -->
             </div>
         </div>
 
         <div class="content-section hidden" id="submitSection">
-            <h2>Submit Your Project</h2>
+            <h2 data-i18n="submitProject">Submit Your Project</h2>
             <form id="submitForm">
                 <div class="form-group">
-                    <input type="text" id="projectTitle" placeholder="Project Title" required>
+                    <input type="text" id="projectTitle" data-i18n-placeholder="projectTitle" placeholder="Project Title" required>
                 </div>
                 <div class="form-group">
-                    <textarea id="projectDescription" placeholder="Describe your AI innovation" required></textarea>
+                    <textarea id="projectDescription" data-i18n-placeholder="projectDescription" placeholder="Describe your AI innovation" required></textarea>
                 </div>
                 <div class="form-group">
-                    <input type="url" id="projectLink" placeholder="Project Link (GitHub/Demo)" required>
+                    <input type="url" id="projectLink" data-i18n-placeholder="projectLink" placeholder="Project Link (GitHub/Demo)" required>
                 </div>
                 <div class="form-group">
-                    <select id="category" required>
+                    <select id="category" data-i18n-options="selectCategory" required>
                         <option value="">Select Category</option>
                         <option value="healthcare">Healthcare</option>
                         <option value="education">Education</option>
@@ -218,46 +225,68 @@
                         <option value="other">Other</option>
                     </select>
                 </div>
-                <button type="submit">Submit Project</button>
+                <button type="submit" data-i18n="submitProjectBtn">Submit Project</button>
             </form>
         </div>
 
         <div class="content-section hidden" id="instructionsSection">
-            <h2>Competition Rules</h2>
+            <h2 data-i18n="competitionRules">Competition Rules</h2>
             <div class="instructions">
-                <h3>🎯 Objective</h3>
-                <p>Create an innovative AI solution that solves real-world problems.</p>
+                <h3 data-i18n="objective">🎯 Objective</h3>
+                <p data-i18n="objectiveDesc">Create an innovative AI solution that solves real-world problems.</p>
 
-                <h3>📋 Requirements</h3>
-                <ul>
-                    <li>Original AI project or concept</li>
-                    <li>Working demo or detailed proposal</li>
-                    <li>Clear documentation</li>
-                    <li>Public repository or live demo</li>
+                <h3 data-i18n="requirements">📋 Requirements</h3>
+                <ul id="requirementsList">
+                    <!-- Will be populated by JavaScript -->
                 </ul>
 
-                <h3>🏆 Judging</h3>
-                <ul>
-                    <li><strong>Innovation (30%):</strong> Originality and creativity</li>
-                    <li><strong>Technical (25%):</strong> Code quality and sophistication</li>
-                    <li><strong>Impact (25%):</strong> Real-world applicability</li>
-                    <li><strong>Presentation (20%):</strong> Clear documentation</li>
+                <h3 data-i18n="judging">🏆 Judging</h3>
+                <ul id="judgingList">
+                    <!-- Will be populated by JavaScript -->
                 </ul>
 
-                <h3>📅 Timeline</h3>
-                <ul>
-                    <li>Registration: Open now</li>
-                    <li>Submission: 30 days from registration</li>
-                    <li>Voting: 7 days after submission</li>
-                    <li>Winner: 3 days after voting</li>
+                <h3 data-i18n="timeline">📅 Timeline</h3>
+                <ul id="timelineList">
+                    <!-- Will be populated by JavaScript -->
                 </ul>
 
-                <h3>🎁 Prize</h3>
-                <p class="prize-highlight">Winner receives a <strong>$100 Amazon Gift Card</strong>!</p>
+                <h3 data-i18n="prize">🎁 Prize</h3>
+                <p class="prize-highlight" data-i18n="prizeDesc">Winner receives a <strong>$100 Amazon Gift Card</strong>!</p>
             </div>
         </div>
     </div>
 
+    <!-- 底栏 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 data-i18n="aboutCompany">About Company</h4>
+                    <p data-i18n="companyDesc">We are a leading technology company focused on fostering AI innovation and connecting brilliant minds worldwide.</p>
+                </div>
+                <div class="footer-section">
+                    <h4 data-i18n="compliance">Compliance</h4>
+                    <p data-i18n="complianceDesc">Our platform adheres to international standards and best practices for AI development and competition.</p>
+                </div>
+                <div class="footer-section">
+                    <h4 data-i18n="contact">Contact</h4>
+                    <p><a href="mailto:contact@aichallenge.com" data-i18n="contactEmail">contact@aichallenge.com</a></p>
+                    <div class="footer-links">
+                        <a href="#" data-i18n="privacy">Privacy Policy</a>
+                        <a href="#" data-i18n="terms">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="copyright">© 2024 AI Innovation Challenge. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 引入脚本 -->
+    <script src="locales.js"></script>
+    <script src="ai-chat.js"></script>
+    <script src="world-map.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
