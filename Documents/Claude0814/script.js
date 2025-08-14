@@ -3,7 +3,6 @@ class AICompetitionApp {
         this.currentUser = null;
         this.entries = [];
         this.votes = {};
-        this.currentSlide = 0;
         this.init();
     }
 
@@ -11,7 +10,6 @@ class AICompetitionApp {
         this.loadData();
         this.setupEventListeners();
         this.loadSampleEntries();
-        this.initCarousel();
         this.updateStats();
     }
 
@@ -43,11 +41,11 @@ class AICompetitionApp {
     }
 
     setupEventListeners() {
-        // Top nav auth buttons
+        // 顶部导航认证按钮
         document.getElementById('loginBtn').addEventListener('click', () => this.showAuthModal('login'));
         document.getElementById('registerBtn').addEventListener('click', () => this.showAuthModal('register'));
         
-        // Get started button
+        // 开始按钮
         document.getElementById('getStartedBtn').addEventListener('click', () => {
             if (this.currentUser) {
                 this.showMainContent();
@@ -56,21 +54,21 @@ class AICompetitionApp {
             }
         });
 
-        // Modal controls
+        // 模态框控制
         document.getElementById('modalClose').addEventListener('click', () => this.hideAuthModal());
         document.getElementById('authModal').addEventListener('click', (e) => {
             if (e.target.id === 'authModal') this.hideAuthModal();
         });
 
-        // Modal auth toggle
+        // 模态框认证切换
         document.getElementById('modalLoginBtn').addEventListener('click', () => this.showLogin());
         document.getElementById('modalRegisterBtn').addEventListener('click', () => this.showRegister());
 
-        // Auth forms
+        // 认证表单
         document.getElementById('loginForm').addEventListener('submit', (e) => this.handleLogin(e));
         document.getElementById('registerForm').addEventListener('submit', (e) => this.handleRegister(e));
 
-        // Navigation (if exists)
+        // 导航标签
         const dashboardTab = document.getElementById('dashboardTab');
         if (dashboardTab) {
             dashboardTab.addEventListener('click', () => this.showDashboard());
@@ -78,18 +76,14 @@ class AICompetitionApp {
             document.getElementById('instructionsTab').addEventListener('click', () => this.showInstructions());
         }
         
-        // Logout
+        // 登出
         document.getElementById('logoutBtn').addEventListener('click', () => this.handleLogout());
 
-        // Submit form (if exists)
+        // 提交表单
         const submitForm = document.getElementById('submitForm');
         if (submitForm) {
             submitForm.addEventListener('submit', (e) => this.handleSubmit(e));
         }
-
-        // Carousel controls
-        document.getElementById('prevBtn').addEventListener('click', () => this.previousSlide());
-        document.getElementById('nextBtn').addEventListener('click', () => this.nextSlide());
     }
 
     showAuthModal(type = 'login') {
@@ -124,7 +118,7 @@ class AICompetitionApp {
         const email = document.getElementById('loginEmail').value;
         const password = document.getElementById('loginPassword').value;
 
-        // Simple validation for demo
+        // 简单验证
         if (email && password) {
             this.currentUser = {
                 email: email,
@@ -133,9 +127,9 @@ class AICompetitionApp {
             };
             this.saveData();
             this.showMainContent();
-            this.showMessage('Login successful!', 'success');
+            this.showMessage('登录成功！', 'success');
         } else {
-            this.showMessage('Please fill in all fields', 'error');
+            this.showMessage('请填写所有字段', 'error');
         }
     }
 
@@ -147,12 +141,12 @@ class AICompetitionApp {
         const confirmPassword = document.getElementById('confirmPassword').value;
 
         if (!name || !email || !password || !confirmPassword) {
-            this.showMessage('Please fill in all fields', 'error');
+            this.showMessage('请填写所有字段', 'error');
             return;
         }
 
         if (password !== confirmPassword) {
-            this.showMessage('Passwords do not match', 'error');
+            this.showMessage('密码不匹配', 'error');
             return;
         }
 
@@ -163,18 +157,18 @@ class AICompetitionApp {
         };
         this.saveData();
         this.showMainContent();
-        this.showMessage('Registration successful! Welcome to the competition!', 'success');
+        this.showMessage('注册成功！欢迎参加挑战赛！', 'success');
     }
 
     showMainContent() {
         this.hideAuthModal();
         
-        // Update nav to show user info
+        // 更新导航显示用户信息
         document.getElementById('authControls').classList.add('hidden');
         document.getElementById('userInfo').classList.remove('hidden');
-        document.getElementById('userGreeting').textContent = `Welcome, ${this.currentUser.name}!`;
+        document.getElementById('userGreeting').textContent = `欢迎，${this.currentUser.name}！`;
         
-        // Show main content if it exists
+        // 显示主内容
         const mainContent = document.getElementById('mainContent');
         if (mainContent) {
             mainContent.classList.remove('hidden');
@@ -219,7 +213,7 @@ class AICompetitionApp {
         const category = document.getElementById('category').value;
 
         if (!title || !description || !link || !category) {
-            this.showMessage('Please fill in all fields', 'error');
+            this.showMessage('请填写所有字段', 'error');
             return;
         }
 
@@ -238,10 +232,10 @@ class AICompetitionApp {
         this.entries.push(newEntry);
         this.saveData();
         
-        // Reset form
+        // 重置表单
         document.getElementById('submitForm').reset();
         
-        this.showMessage('Your entry has been submitted successfully!', 'success');
+        this.showMessage('项目提交成功！', 'success');
         this.showDashboard();
     }
 
@@ -250,9 +244,9 @@ class AICompetitionApp {
         
         if (this.entries.length === 0) {
             entriesList.innerHTML = `
-                <div style="text-align: center; padding: 40px; color: #666;">
-                    <h3>No entries yet!</h3>
-                    <p>Be the first to submit your AI innovation and inspire others to join the challenge!</p>
+                <div style="text-align: center; padding: 40px; color: #6b7280;">
+                    <h3>还没有项目！</h3>
+                    <p>成为第一个提交AI创新项目的人，激励其他人加入挑战！</p>
                 </div>
             `;
             return;
@@ -263,7 +257,7 @@ class AICompetitionApp {
             .map(entry => this.renderEntryCard(entry))
             .join('');
 
-        // Add vote event listeners
+        // 添加投票事件监听器
         document.querySelectorAll('.vote-btn').forEach(btn => {
             btn.addEventListener('click', (e) => this.handleVote(e));
         });
@@ -272,7 +266,7 @@ class AICompetitionApp {
     renderEntryCard(entry) {
         const userVoted = this.votes[`${this.currentUser.id}_${entry.id}`] || false;
         const voteButtonClass = userVoted ? 'vote-btn voted' : 'vote-btn';
-        const voteButtonText = userVoted ? 'Voted!' : 'Vote';
+        const voteButtonText = userVoted ? '已投票' : '投票';
 
         return `
             <div class="entry-card">
@@ -285,10 +279,10 @@ class AICompetitionApp {
                 </div>
                 <div class="entry-description">${this.escapeHtml(entry.description)}</div>
                 <div class="entry-footer">
-                    <a href="${this.escapeHtml(entry.link)}" target="_blank" class="entry-link">View Project →</a>
+                    <a href="${this.escapeHtml(entry.link)}" target="_blank" class="entry-link">查看项目 →</a>
                     <div class="vote-section">
                         <button class="${voteButtonClass}" data-entry-id="${entry.id}">${voteButtonText}</button>
-                        <span class="vote-count">${entry.votes} votes</span>
+                        <span class="vote-count">${entry.votes} 票</span>
                     </div>
                 </div>
             </div>
@@ -300,18 +294,18 @@ class AICompetitionApp {
         const voteKey = `${this.currentUser.id}_${entryId}`;
         
         if (this.votes[voteKey]) {
-            this.showMessage('You have already voted for this entry!', 'error');
+            this.showMessage('您已经为这个项目投票了！', 'error');
             return;
         }
 
-        // Find the entry and increment votes
+        // 找到项目并增加票数
         const entry = this.entries.find(e => e.id === entryId);
         if (entry) {
             entry.votes++;
             this.votes[voteKey] = true;
             this.saveData();
             this.renderEntries();
-            this.showMessage('Vote recorded! Thank you for participating!', 'success');
+            this.showMessage('投票成功！感谢您的参与！', 'success');
         }
     }
 
@@ -319,25 +313,25 @@ class AICompetitionApp {
         this.currentUser = null;
         localStorage.removeItem('aicomp_user');
         
-        // Update nav to show auth controls
+        // 更新导航显示认证控制
         document.getElementById('authControls').classList.remove('hidden');
         document.getElementById('userInfo').classList.add('hidden');
         
-        // Hide main content if it exists
+        // 隐藏主内容
         const mainContent = document.getElementById('mainContent');
         if (mainContent) {
             mainContent.classList.add('hidden');
         }
         
-        // Reset forms
+        // 重置表单
         document.getElementById('loginForm').reset();
         document.getElementById('registerForm').reset();
         
-        this.showMessage('Logged out successfully!', 'success');
+        this.showMessage('登出成功！', 'success');
     }
 
     showMessage(message, type) {
-        // Remove existing messages
+        // 移除现有消息
         document.querySelectorAll('.success-message, .error-message').forEach(msg => {
             msg.remove();
         });
@@ -349,7 +343,7 @@ class AICompetitionApp {
         const container = document.querySelector('.container');
         container.insertBefore(messageDiv, container.firstChild);
 
-        // Auto-remove after 5 seconds
+        // 5秒后自动移除
         setTimeout(() => {
             messageDiv.remove();
         }, 5000);
@@ -366,8 +360,8 @@ class AICompetitionApp {
             this.entries = [
                 {
                     id: 1,
-                    title: "AI-Powered Code Review Assistant",
-                    description: "An intelligent system that automatically reviews code for bugs, security vulnerabilities, and performance issues using machine learning algorithms.",
+                    title: "AI代码审查助手",
+                    description: "使用机器学习算法自动审查代码中的错误、安全漏洞和性能问题的智能系统。",
                     link: "https://github.com/example/ai-code-reviewer",
                     category: "productivity",
                     author: "Alex Chen",
@@ -377,8 +371,8 @@ class AICompetitionApp {
                 },
                 {
                     id: 2,
-                    title: "Smart Medical Diagnosis Tool",
-                    description: "A deep learning model that assists doctors in diagnosing diseases from medical images with 95% accuracy, helping improve healthcare outcomes.",
+                    title: "智能医疗诊断工具",
+                    description: "深度学习模型，帮助医生从医学图像中诊断疾病，准确率达95%，改善医疗结果。",
                     link: "https://github.com/example/medical-ai",
                     category: "healthcare",
                     author: "Dr. Sarah Johnson",
@@ -388,8 +382,8 @@ class AICompetitionApp {
                 },
                 {
                     id: 3,
-                    title: "EcoTrack - Environmental Impact Monitor",
-                    description: "An AI system that tracks and predicts environmental changes using satellite data and IoT sensors to help combat climate change.",
+                    title: "EcoTrack - 环境影响监测器",
+                    description: "使用卫星数据和物联网传感器跟踪和预测环境变化的AI系统，帮助应对气候变化。",
                     link: "https://github.com/example/ecotrack",
                     category: "environment",
                     author: "Green Team",
@@ -401,58 +395,8 @@ class AICompetitionApp {
             this.saveData();
         }
     }
-}
 
-    // Carousel functionality
-    initCarousel() {
-        this.createCarouselDots();
-        setInterval(() => this.nextSlide(), 5000); // Auto-advance every 5 seconds
-    }
-
-    createCarouselDots() {
-        const dotsContainer = document.getElementById('carouselDots');
-        const slides = document.querySelectorAll('.carousel-slide');
-        
-        for (let i = 0; i < slides.length; i++) {
-            const dot = document.createElement('div');
-            dot.className = i === 0 ? 'carousel-dot active' : 'carousel-dot';
-            dot.addEventListener('click', () => this.goToSlide(i));
-            dotsContainer.appendChild(dot);
-        }
-    }
-
-    updateCarouselDots() {
-        const dots = document.querySelectorAll('.carousel-dot');
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === this.currentSlide);
-        });
-    }
-
-    nextSlide() {
-        const slides = document.querySelectorAll('.carousel-slide');
-        this.currentSlide = (this.currentSlide + 1) % slides.length;
-        this.updateCarousel();
-    }
-
-    previousSlide() {
-        const slides = document.querySelectorAll('.carousel-slide');
-        this.currentSlide = this.currentSlide === 0 ? slides.length - 1 : this.currentSlide - 1;
-        this.updateCarousel();
-    }
-
-    goToSlide(index) {
-        this.currentSlide = index;
-        this.updateCarousel();
-    }
-
-    updateCarousel() {
-        const carousel = document.getElementById('projectCarousel');
-        const translateX = -this.currentSlide * 100;
-        carousel.style.transform = `translateX(${translateX}%)`;
-        this.updateCarouselDots();
-    }
-
-    // Update stats on homepage
+    // 更新首页统计
     updateStats() {
         const participantCount = this.getUniqueParticipants();
         const projectCount = this.entries.length;
@@ -463,11 +407,11 @@ class AICompetitionApp {
 
     getUniqueParticipants() {
         const uniqueAuthors = new Set(this.entries.map(entry => entry.authorId));
-        return Math.max(uniqueAuthors.size + 145, 150); // Simulate existing participants
+        return Math.max(uniqueAuthors.size + 145, 150); // 模拟现有参与者
     }
 }
 
-// Initialize the app when the DOM is loaded
+// 当DOM加载完成后初始化应用
 document.addEventListener('DOMContentLoaded', () => {
     new AICompetitionApp();
 });
